@@ -38,5 +38,74 @@
 
 
 
+## Unsupervised Adversarially Robust Representation Learning on Graphs
+
+- 无监督/自监督的预训练方法在**图表征学习**（graph representation learning）方向很火，通过这些方法可以生成不同种类的下游应用，但是目前这些图学习模型的robustness，研究的比较少
+  - TODO：下游应用具体有哪些？图表征学习和传统的图神经网络有什么区别？
+- 大部分现存的针对图表征学习的端到端（end-to-end）防御技术需要预先给出labels，而作者提出了一种**无监督**的防御方法来提高预训练模型的鲁棒性
+  - TODO：end-to-end的防御技术指的是什么？还有其他类别的防御技术吗？
+- 作者主要是引入了一种基于**互信息**的方法来量化神经网络的鲁棒性，然后把整个问题形式化为一个优化问题。作者trade-off了graph encoder的表达能力和鲁棒性。由于图神经网络的拓扑结构、离散的特性以及图数据的joint space，优化问题非常难解，对此作者relax了问题，给出了近似解。
+  - TODO：graph encoder是什么？优化问题难解的三个原因的具体内容。
+- 此外作者还指出，无监督graph encoder的robustness和下游任务之间存在可以被证明的关系。
+- 关键词：图表征学习（graph representation learning），robustness，防御，无监督的防御方法
 
 
+
+## Unifying Model Explainability and Robustness for Joint Text Classification and Rationale Extraction
+
+- **可解释性**和**鲁棒性**是**可信、可靠**的文本分类问题中的两个关键因素
+  - 可解释性对应可信、鲁棒性对应可靠
+- 以往的工作基本上只关注这两个方面的其中某一个方面：
+  - 要么在保证预测效果的前提下，给可解释性提供一套准确的rationales（基本原理）
+  - 要么就是使模型在面对不同种类的样本攻击时更加robust
+- 直观上来说，一个模型的可解释性好，也意味着模型更加robust。假如说一个模型在面对输入样本的扰动时，产生的预测结果也会发生变化，那么这样的模型通常是不可信的。
+
+- 对此，作者提出了一种联合了**文本分类**和**原理提取**（rationale extraction）的一个模型，关键的技术机制有两个：
+  - Adversarial Training（AT）：在离散和嵌入空间内使用不同的扰动样本来提高鲁棒性
+  - Boundary Match Constraint (BMC)：在Boundary 信息的指导下使得基本原理更加准确
+- 总之，作者就是即想要**可解释性**，也想要**鲁棒性**
+
+- 关键词：可解释性（explainability），鲁棒性（robustness），文本分类，原理提取（rationale extraction），防御
+
+
+
+## Learning to Learn Transferable Attack
+
+- 迁移对抗攻击（Transfer adversarial attack）是一种non-trivial的黑盒对抗攻击方法。迁移攻击首先在一个代理模型（surrogate model）上生成对抗扰动，然后把扰动应用到被攻击的模型上（victim model）。
+- 现有的transferability方法有很多局限性，因为在代理模型上的对抗扰动非常容易over-fitting。因此作者提出了一种Learning
+  to Learn Transferable Attack (LLTA)的方法，通过**数据增强**和**模型增强**来使得扰动更加generalized.
+- 关键词：迁移学习，对抗攻击，元学习（Meta-Learning），数据增强，模型增强，黑盒攻击
+
+
+
+## Sparse-RS: A Versatile Framework for Query-Efficient Sparse Black-Box Adversarial Attacks
+
+- 作者提出了一种基于随机搜索（random search）的框架，进行score-based的黑盒攻击
+  - 随机搜索：TODO
+  - sparse attack：稀疏攻击，定义为只能修改图像很少数量的像素，但是不限制修改的幅度
+
+- 关键词：稀疏攻击，黑盒攻击，随机搜索
+
+
+
+## Shape Prior Guided Attack: Sparser Perturbations on 3D Point Clouds. 
+
+- 作者关注于3D点云（3D point cloud）分类模型的robustness
+- 作者提出了一种新的方法用来生成对抗点云样本，使用了shape的先验信息，来使得扰动更加sparse，从而达到更imperceptible的攻击
+- 作者提出了一种Spatially Logical Block (SLB)的方法应用于对抗点上，此外还设计了一种算法称为FOFA将问题划分为子问题
+- 关键词：先验信息，稀疏扰动，对抗样本攻击，3D点云
+
+
+
+## Adversarial Attack for Asynchronous Event-Based Data
+
+- 2D图像和3D点云的对抗样本以及被研究的很多了，但是event-based的数据研究的比较少
+- 基于事件的数据在高速移动下可以被替代为2D的图像，比如说自动驾驶。
+- 作者首次在event-based上给出了对抗的样本，并训练了一个robust的模型
+- 关键词：基于事件的数据，攻击
+
+
+
+## CLPA: Clean-Label Poisoning Availability Attacks Using Generative Adversarial Nets
+
+- 投毒攻击
